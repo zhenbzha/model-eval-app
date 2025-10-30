@@ -46,5 +46,3 @@ jobs:
 
       - name: Deploy Application
         run: azd deploy --no-prompt
-        env:
-          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}

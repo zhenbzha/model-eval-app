@@ -50,7 +50,7 @@ resource webContainerApp 'Microsoft.App/containerApps@2025-01-01' = {
           }
           env: [
             {
-              name: 'DATABASE_URL'
+              name: 'POSTGRES_URL'
               secretRef: 'postgres-connection-string'
             }
           ]
