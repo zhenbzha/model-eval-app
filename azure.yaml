@@ -10,3 +10,8 @@ services:
     docker:
       path: ./Dockerfile
       context: .
+
+pipeline:
+  secrets:
+    - POSTGRES_ADMIN_LOGIN
+    - POSTGRES_ADMIN_PASSWORD
