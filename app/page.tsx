@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ThumbsUp, ThumbsDown, Sparkles, ClipboardList, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 // Mock data for models with vote statistics
 const models = [
@@ -48,15 +49,19 @@ const models = [
 
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<string>("1");
-  const [feedback, setFeedback] = useState<{ modelId: string; type: "up" | "down" } | null>(null);
 
   const handleVote = (type: "up" | "down") => {
     if (!selectedModel) return;
 
-    setFeedback({ modelId: selectedModel, type });
-
-    // Clear feedback after 2 seconds
-    setTimeout(() => setFeedback(null), 2000);
+    if (type === "up") {
+      toast("Your feedback is recorded!", {
+        description: "Thank you for your feedback on this model.",
+      });
+    } else {
+      toast("Your feedback is recorded!", {
+        description: "Thank you for your feedback. We'll work on improvements.",
+      });
+    }
   };
 
   const selectedModelData = models.find(m => m.id === selectedModel);
@@ -182,22 +187,6 @@ export default function Home() {
                     </div>
                   </CardContent>
                 </Card>
-
-                {/* Feedback Message */}
-                {feedback && feedback.modelId === selectedModel && (
-                  <div
-                    className={cn(
-                      "w-full p-6 rounded-xl font-semibold text-center text-lg animate-in fade-in slide-in-from-bottom-4 duration-500",
-                      feedback.type === "up"
-                        ? "bg-green-100 text-green-800 border-2 border-green-300"
-                        : "bg-red-100 text-red-800 border-2 border-red-300"
-                    )}
-                  >
-                    {feedback.type === "up"
-                      ? "✓ Positive feedback recorded! Thank you!"
-                      : "✓ Negative feedback recorded! Thank you!"}
-                  </div>
-                )}
               </>
           </div>
         </div>
