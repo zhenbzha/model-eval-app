@@ -20,9 +20,9 @@ export async function getModelsWithStats(): Promise<ModelWithStats[]> {
       name: models.name,
       version: models.version,
       description: models.description,
-      thumbsUp: sql<number>`cast(count(case when ${evaluations.vote} = true then 1 end) as integer)`,
-      thumbsDown: sql<number>`cast(count(case when ${evaluations.vote} = false then 1 end) as integer)`,
-    })
+      thumbsUp: sql<number>`coalesce(sum(case when ${evaluations.vote} = true then 1 else 0 end), 0)::integer`,
+      thumbsDown: sql<number>`coalesce(sum(case when ${evaluations.vote} = false then 1 else 0 end), 0)::integer`,
+      })
     .from(models)
     .leftJoin(evaluations, eq(models.id, evaluations.modelId))
     .groupBy(models.id);
