@@ -64,7 +64,7 @@ export default function VotingInterface({ models }: VotingInterfaceProps) {
               <Card
                 key={model.id}
                 className={cn(
-                  "cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02]",
+                  "cursor-pointer transition-all duration-200 hover:shadow-md hover:scale-[1.02]",
                   selectedModel === model.id
                     ? "border-2 border-indigo-500 bg-indigo-50 shadow-md"
                     : "border border-gray-200 hover:border-indigo-300 bg-white"
@@ -95,7 +95,7 @@ export default function VotingInterface({ models }: VotingInterfaceProps) {
         <div className="w-full max-w-2xl space-y-4">
           {/* Thumbs Up Card */}
           <Card
-            className="w-full cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] border-2 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200 hover:border-green-400 group"
+            className="w-full cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200 hover:border-green-400 group"
             onClick={() => handleVote("up")}
           >
             <CardContent className="p-6 text-center">
@@ -104,7 +104,7 @@ export default function VotingInterface({ models }: VotingInterfaceProps) {
                   {justVoted === "up" ? (
                     <Check className="w-8 h-8 text-green-600 animate-in zoom-in duration-200" />
                   ) : (
-                    <ThumbsUp className="w-8 h-8 text-green-600 group-hover:scale-110 transition-transform" />
+                    <ThumbsUp className="w-8 h-8 text-green-600" />
                   )}
                 </div>
                 <h3 className="text-2xl font-bold text-green-800">Good Performance</h3>
@@ -115,7 +115,7 @@ export default function VotingInterface({ models }: VotingInterfaceProps) {
 
           {/* Thumbs Down Card */}
           <Card
-            className="w-full cursor-pointer transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] border-2 bg-gradient-to-br from-red-50 to-rose-50 border-red-200 hover:border-red-400 group"
+            className="w-full cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 bg-gradient-to-br from-red-50 to-rose-50 border-red-200 hover:border-red-400 group"
             onClick={() => handleVote("down")}
           >
             <CardContent className="p-6 text-center">
@@ -124,7 +124,7 @@ export default function VotingInterface({ models }: VotingInterfaceProps) {
                   {justVoted === "down" ? (
                     <Check className="w-8 h-8 text-red-600 animate-in zoom-in duration-200" />
                   ) : (
-                    <ThumbsDown className="w-8 h-8 text-red-600 group-hover:scale-110 transition-transform" />
+                    <ThumbsDown className="w-8 h-8 text-red-600" />
                   )}
                 </div>
                 <h3 className="text-2xl font-bold text-red-800">Poor Performance</h3>
