@@ -5,6 +5,8 @@ import { getModelsWithStats } from "@/app/actions/models";
 import PageHeader from "../components/page-header";
 import PageNav from "../components/page-nav";
 
+export const dynamic = 'force-dynamic';
+
 export default async function StatisticsPage() {
   const models = await getModelsWithStats();
 

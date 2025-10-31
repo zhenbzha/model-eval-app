@@ -3,6 +3,8 @@ import VotingInterface from "./components/voting-interface";
 import PageHeader from "./components/page-header";
 import PageNav from "./components/page-nav";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const models = await getModelsWithStats();
 
